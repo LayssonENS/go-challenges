@@ -1,12 +1,9 @@
-package main
+package example
 
-import "fmt"
-
-func main() {
-	str := "asdasdasdsadsadcsad"
-	teste := FirstNonRepeatingCharacter(str)
-	fmt.Print(teste)
-}
+//Given a string S consisting of lowercase Latin Letters, the task is to find the first non-repeating character in S.
+//Input: “geeksforgeeks”
+//Output: 5
+//Explanation: As 5 is first character in the string which does not repeat.
 
 func FirstNonRepeatingCharacterOld(str string) int {
 	for i := range str {
@@ -25,16 +22,18 @@ func FirstNonRepeatingCharacterOld(str string) int {
 }
 
 func FirstNonRepeatingCharacter(str string) int {
-	characterCounts := map[string]string{}
+
+	charCountNoRepeat := make(map[string]int)
 
 	for _, char := range str {
-		characterCounts[string(char)] += "a"
+		charCountNoRepeat[string(char)] += 1
 	}
 
 	for i, char := range str {
-		if characterCounts[string(char)] == "hg" {
+		if charCountNoRepeat[string(char)] == 1 {
 			return i
 		}
 	}
+
 	return -1
 }
